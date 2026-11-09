@@ -1,3 +1,4 @@
+const { assertPaid } = require('./safety-policy');
 const OpenAI = require('openai');
 const Replicate = require('replicate');
 const { exec } = require('child_process');
@@ -42,6 +43,7 @@ class AIVideoGenerator {
   }
 
   async generateTTSAudio(text, outputPath) {
+    assertPaid();
     this.logger.info('Generating TTS audio...');
     
     try {
@@ -64,6 +66,7 @@ class AIVideoGenerator {
   }
 
   async generateElevenLabsTTS(text, outputPath) {
+    assertPaid();
     const url = `https://api.elevenlabs.io/v1/text-to-speech/${this.elevenLabsVoiceId}`;
     
     const data = {
@@ -102,6 +105,7 @@ class AIVideoGenerator {
   }
 
   async generateOpenAITTS(text, outputPath) {
+    assertPaid();
     const response = await this.openai.audio.speech.create({
       model: "tts-1-hd",
       voice: "nova",
@@ -117,6 +121,7 @@ class AIVideoGenerator {
   }
 
   async generateVisualAssets(prompt, style = "ethereal", count = 1) {
+    assertPaid();
     this.logger.info(`Generating ${count} visual assets with style: ${style}`);
     
     try {
@@ -201,6 +206,7 @@ class AIVideoGenerator {
   }
 
   async generateReplicateVideo(script, visualAssets, audioPath, outputPath) {
+    assertPaid();
     // Use Stable Video Diffusion or similar model
     const output = await this.replicate.run(
       "stability-ai/stable-video-diffusion:3f0457e4619daac51203dedb1a4f46e66251bb3bfb18edd25d728dda8aa28ab7",
@@ -542,6 +548,7 @@ class AIVideoGenerator {
   }
 
   async generateThumbnail(script, style = "ethereal") {
+    assertPaid();
     this.logger.info('Generating custom thumbnail...');
     
     try {

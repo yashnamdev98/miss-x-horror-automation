@@ -4,10 +4,10 @@
   "description": "Fully automated YouTube channel management system with specialized AI agents",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node horror/status.js",
     "setup": "node setup.js",
     "scheduler": "node schedules/daily-automation.js",
-    "test": "node test.js",
+    "test": "node --test test/*.test.js",
     "agent:strategy": "node agents/content-strategy-agent.js",
     "agent:script": "node agents/script-writer-agent.js",
     "agent:thumbnail": "node agents/thumbnail-designer-agent.js",
@@ -18,7 +18,11 @@
     "workflow:daily": "node workflows/daily-content-pipeline.js",
     "workflow:weekly": "node workflows/weekly-strategy-review.js",
     "db:init": "node database/init.js",
-    "credentials:setup": "node utils/credential-manager.js setup"
+    "credentials:setup": "node utils/credential-manager.js setup",
+    "test:upstream": "node test.js",
+    "horror": "node horror/cli.js",
+    "start:legacy": "node index.js",
+    "oauth:youtube": "node horror/oauth.js"
   },
   "dependencies": {
     "@google-cloud/local-auth": "^3.0.0",

@@ -1,3 +1,4 @@
+const { assertPublishingDisabled } = require('../utils/safety-policy');
 const { google } = require('googleapis');
 const fs = require('fs').promises;
 const path = require('path');
@@ -41,6 +42,7 @@ class PublishingSchedulingAgent {
   }
 
   async scheduleContent(productionData) {
+    assertPublishingDisabled();
     try {
       this.logger.info(`Scheduling content: ${productionData.id}`);
       
@@ -73,6 +75,7 @@ class PublishingSchedulingAgent {
   }
 
   async publishContent(contentId) {
+    assertPublishingDisabled();
     try {
       this.logger.info(`Publishing content: ${contentId}`);
       
@@ -107,6 +110,7 @@ class PublishingSchedulingAgent {
   }
 
   async uploadToYouTube(scheduleEntry) {
+    assertPublishingDisabled();
     const { metadata } = scheduleEntry;
     
     // Prepare video metadata
@@ -120,7 +124,7 @@ class PublishingSchedulingAgent {
         defaultAudioLanguage: metadata.seo.metadata.language
       },
       status: {
-        privacyStatus: process.env.DEFAULT_PRIVACY_STATUS || 'public',
+        privacyStatus: 'private',
         publishAt: scheduleEntry.publishTime,
         selfDeclaredMadeForKids: false
       }
@@ -162,6 +166,7 @@ class PublishingSchedulingAgent {
   }
 
   async uploadThumbnail(videoId, thumbnailPath) {
+    assertPublishingDisabled();
     try {
       const thumbnailBuffer = await fs.readFile(thumbnailPath);
       
@@ -179,6 +184,7 @@ class PublishingSchedulingAgent {
   }
 
   async uploadCaptions(videoId, captionsPath) {
+    assertPublishingDisabled();
     try {
       const captionsContent = await fs.readFile(captionsPath, 'utf8');
       
@@ -204,6 +210,7 @@ class PublishingSchedulingAgent {
   }
 
   async processPublishQueue() {
+    assertPublishingDisabled();
     this.logger.info('Processing publish queue...');
     
     const now = new Date();
@@ -405,6 +412,7 @@ class PublishingSchedulingAgent {
   }
 
   async emergencyPublish(contentId, delayMinutes = 0) {
+    assertPublishingDisabled();
     // For urgent publishing needs
     this.logger.info(`Emergency publish requested: ${contentId}`);
     
@@ -444,6 +452,7 @@ class PublishingSchedulingAgent {
   }
 
   async resumeScheduledContent(contentId, newPublishTime = null) {
+    assertPublishingDisabled();
     const entry = this.publishQueue.find(e => 
       e.productionId === contentId || e.id === contentId
     );

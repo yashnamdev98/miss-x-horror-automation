@@ -24,6 +24,8 @@ class YouTubeAutomationAgent {
   }
 
   async initialize() {
+    throw new Error('Legacy automation disabled. Use npm start and npm run horror; see docs/HORROR_SETUP.md.');
+
     try {
       console.log(chalk.cyan.bold('\n🎬 YouTube Automation Agent v1.0'));
       console.log(chalk.gray('─'.repeat(50)));

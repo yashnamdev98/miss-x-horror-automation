@@ -7,22 +7,17 @@ class DailyAutomation {
     this.db = database;
     this.logger = new Logger('DailyAutomation');
     this.scheduledTasks = new Map();
-    this.isEnabled = true;
+    this.isEnabled = false;
   }
 
   async initialize() {
-    this.logger.info('Initializing daily automation scheduler...');
-    
-    await this.setupScheduledTasks();
-    
-    // Start monitoring loop
-    this.startMonitoringLoop();
-    
-    this.logger.success('Daily automation initialized successfully');
-    return true;
+    this.logger.info('Staging: scheduler disabled');
+    return false;
   }
 
   async setupScheduledTasks() {
+    throw new Error('Scheduler locked pending integration testing');
+
     // Daily content generation at 6:00 AM
     this.scheduledTasks.set('daily-content-generation', 
       cron.schedule('0 6 * * *', async () => {
@@ -547,7 +542,9 @@ class DailyAutomation {
   }
 
   async resumeAutomation() {
-    this.isEnabled = true;
+    throw new Error('Scheduler locked pending integration testing');
+
+    this.isEnabled = false;
     this.logger.info('Automation resumed');
   }
 

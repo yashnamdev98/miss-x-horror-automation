@@ -79,3 +79,8 @@ backup/
 # Cache
 .cache/
 *.cache
+# Horror private production and OAuth
+production-output/
+config/oauth-client.json
+.env.*
+!.env.example

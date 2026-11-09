@@ -45,12 +45,12 @@ class CredentialManager {
 
   async saveCredentials() {
     await fs.mkdir(path.dirname(this.credentialsPath), { recursive: true });
-    await fs.writeFile(this.credentialsPath, JSON.stringify(this.credentials, null, 2));
+    await fs.writeFile(this.credentialsPath, JSON.stringify(this.credentials, null, 2), {mode: 0o600});
   }
 
   async saveTokens() {
     await fs.mkdir(path.dirname(this.tokensPath), { recursive: true });
-    await fs.writeFile(this.tokensPath, JSON.stringify(this.tokens, null, 2));
+    await fs.writeFile(this.tokensPath, JSON.stringify(this.tokens, null, 2), {mode: 0o600});
   }
 
   // YouTube API Authentication
