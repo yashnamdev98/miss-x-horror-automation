@@ -77,4 +77,4 @@ Official references:
 
 Tests cover offline brief/provenance validation, script coverage, Gemini mocked requests and quota stop behavior, draft exports, endpoint publication denial, legacy publish/scheduler/paid-provider guards, and OAuth callback validation. No live Gemini, TTS, Flow, VirtualVault render, Google consent or YouTube upload was tested. Browser sessions are preserved, not converted into server-side credentials.
 
-Upstream dependency audit findings remain a deployment blocker; see VALIDATION.md for the measured counts. Keep this local staging workflow off public hosting. Native SQLite and the legacy database integration are not validated by `--ignore-scripts` installation.
+The inherited dependency findings were resolved in the November 9 follow-up: npm audit reports zero vulnerabilities. SQLite and sharp native compatibility tests pass after rebuilding their registry packages. Legacy end-to-end automation remains disabled and unvalidated; do not infer readiness from a clear dependency audit. See VALIDATION.md.
