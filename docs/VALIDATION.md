@@ -18,3 +18,20 @@
 - Live AI Studio inspection: existing project gen-lang-client-0367044484 is Tier 1 (paid), so no Gemini API requests were made and no free-tier assertion was enabled. Billing page showed zero credit balance and a payment-profile issue; no purchase, payment or billing change was performed.
 - Existing Cloud project has no OAuth clients and its Google Auth Platform was not configured. Prepared testing-mode branding; accepting the User Data Policy and creating new account-access credentials require specific browser confirmation.
 - User specifically approved Google User Data Policy acceptance, Desktop client creation and read-only YouTube authorization. Testing-mode consent configuration and the MISS X HORROR Local Read-only Desktop client were created. Secure client JSON save and token consent are pending because Chrome switched to an unrelated Zoho save dialog; no unrelated file was saved or overwritten.
+
+## Live connection verification
+
+- YouTube Data API v3 enabled after specific approval of its terms. Owner account saved as the sole OAuth test user; app remains in Testing.
+- Desktop JSON downloaded directly to ignored config/oauth-client.json with mode 0600. Local config/tokens.json saved with mode 0600, containing only youtube.readonly authorization.
+- Actual channels.list(mine=true) readback returned MISS X HORROR, channel UCA9ucFsWqyjqmJy4BI_aYDw. No upload/manage scope was requested.
+- Added safe OAuth failure diagnostics: stage and sanitized status/code only; returned channel names/IDs on mismatch, never provider error bodies or tokens. A retry succeeded after API enablement.
+- VirtualVault imported the original 46-word fictional test script into four scenes using 3 existing monthly credits (83 to 80), with included VV Exclusive female Luna narration. No credits purchased and no paid API enabled. Media/render/private upload validation still in progress.
+
+## Actual MP4 verification — November 10, 2026
+
+- Render short_1794209192488_iuia86 completed in VirtualVault; all 4 visuals, voiceovers and caption sets were ready. Monthly balance remained 80 after render (total use: 3 credits).
+- Downloaded via the authenticated browser. File: the-last-ticket-test.mp4, 1,719,857 bytes. Actual container duration 15.57 seconds, H.264 720x1280 yuv420p at 30 fps, square pixels, AAC 48 kHz stereo.
+- Full FFmpeg audio/video decode succeeded (exit 0). Measured integrated loudness -20.3 LUFS and true peak -7.0 dBFS. Representative decoded frames inspected across the clip.
+- Offline tiny.en Whisper transcription recovered all four script sentences including the final words. This supports completeness but does not substitute for human listening on headphones/speakers.
+- Release QA issue: captions in the exported file are too small; actual duration is below the 20–30-second series target. Do not publish this as a finished episode or unlock automatic publishing based on this technical test. No post-render speed stretching or padding was used.
+- YouTube Studio dashboard for MISS X HORROR is accessible; private upload awaits the final upload-dialog terms acknowledgement.

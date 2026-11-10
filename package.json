@@ -22,7 +22,8 @@
     "test:upstream": "node test.js",
     "horror": "node horror/cli.js",
     "start:legacy": "node index.js",
-    "oauth:youtube": "node horror/oauth.js"
+    "oauth:youtube": "node horror/oauth.js",
+    "youtube:verify": "node horror/verify-youtube.js"
   },
   "dependencies": {
     "@google-cloud/local-auth": "^3.0.0",

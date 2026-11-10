@@ -1,5 +1,11 @@
 # Step-by-step setup and acceptance checklist
 
+## Current verified state — November 10, 2026
+
+YouTube Data API v3 is enabled. The consent app and Desktop OAuth client were created with specific owner approval. The owner is the sole test user, the app remains in Testing, and ignored local tokens grant youtube.readonly only. Live readback verified MISS X HORROR and UCA9ucFsWqyjqmJy4BI_aYDw. Run `npm run youtube:verify` to repeat the read-only check. Do not create another client or overwrite the existing local files.
+
+The existing Gemini project is paid Tier 1 with a billing issue; Gemini API generation remains disabled. VirtualVault's included female Luna voice, four scene visuals/captions and a completed MP4 were tested using 3 monthly credits (83 to 80). The actual test file is 15.57 seconds, 720x1280 at 30 fps with AAC stereo. Its full narration was matched by offline transcription. Captions are undersized and this is a private technical test, not a release-ready episode. No narration speed stretching was performed. Long-form assembly and a 20–30-second release-quality Short remain unvalidated.
+
 ## 1. Repository and installation
 
 Owner selected by user: `yashnamdev98`. Fork: https://github.com/yashnamdev98/miss-x-horror-automation . Upstream MIT license is retained. Initial source commit: `3ea1b524c0a729a7ebd49f3f64ad11fed626222a`.

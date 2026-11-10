@@ -20,18 +20,26 @@ async function authenticate() {
       res.writeHead(400); res.end('Invalid OAuth callback. No tokens saved.'); return;
     }
     busy=true;
+    let stage='token-exchange';
     try {
       const {tokens}=await client.getToken({code:url.searchParams.get('code'),codeVerifier});
       client.setCredentials(tokens);
       const yt=google.youtube({version:'v3',auth:client});
+      stage='channel-read';
       const result=await yt.channels.list({part:'id,snippet',mine:true});
-      if (!result.data.items?.some(x=>x.id===require('./pipeline').CHANNEL_ID)) throw new Error('Wrong channel');
+      if (!result.data.items?.some(x=>x.id===require('./pipeline').CHANNEL_ID)) {
+        console.error('Channel mismatch. Returned channel identities:',JSON.stringify((result.data.items || []).map(x=>({id:x.id,title:x.snippet?.title}))));
+        throw new Error('Wrong channel');
+      }
+      stage='token-save';
       // Exclusive creation protects any existing integration/token file.
       await fs.writeFile(path.join(ROOT,'tokens.json'),JSON.stringify({youtube:tokens},null,2),{mode:0o600,flag:'wx'});
       res.end('Read-only YouTube OAuth verified and saved. Publishing remains disabled.');
       console.log('Verified target channel; read-only token saved. No automation started.');
       server.close();
-    } catch {
+    } catch (error) {
+      const code=error?.response?.status || error?.code || 'verification-failed';
+      console.error('OAuth stopped:',JSON.stringify({stage,code:String(code).replace(/[^a-zA-Z0-9_-]/g,'').slice(0,40)}));
       res.writeHead(400); res.end('OAuth failed, wrong channel, or tokens.json already exists. No credentials logged.');
       server.close();
     }
