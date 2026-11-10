@@ -34,4 +34,4 @@
 - Full FFmpeg audio/video decode succeeded (exit 0). Measured integrated loudness -20.3 LUFS and true peak -7.0 dBFS. Representative decoded frames inspected across the clip.
 - Offline tiny.en Whisper transcription recovered all four script sentences including the final words. This supports completeness but does not substitute for human listening on headphones/speakers.
 - Release QA issue: captions in the exported file are too small; actual duration is below the 20–30-second series target. Do not publish this as a finished episode or unlock automatic publishing based on this technical test. No post-render speed stretching or padding was used.
-- YouTube Studio dashboard for MISS X HORROR is accessible; private upload awaits the final upload-dialog terms acknowledgement.
+- YouTube Studio dashboard for MISS X HORROR is accessible. The owner ultimately chose local-only on November 10; no file was selected or uploaded, and the upload dialog was closed. No test video URL exists.
